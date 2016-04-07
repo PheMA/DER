@@ -1,0 +1,28 @@
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://java.sun.com/xml/ns/javaee"
+         xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+         id="WebApp_ID" version="2.5" >
+     <servlet >
+         <servlet-name >QDM REST Service</servlet-name >
+         <servlet-class >com.sun.jersey.spi.container.servlet.ServletContainer </servlet-class >
+         <init-param >
+             <param-name >com.sun.jersey.config.property.packages </param-name >
+             <param-value >org.mayo.edu.phema</param-value >
+             
+             
+         </init-param >
+         <!--  http://stackoverflow.com/questions/16247110/a-json-object-in-a-post-request-for-webserver-with-jersey -->
+         <init-param>
+            <param-name>com.sun.jersey.config.feature.DisableWADL</param-name>
+            <param-value>true</param-value>
+        </init-param>
+
+         <load-on-startup >1 </load-on-startup >
+
+     </servlet >
+     <servlet-mapping >
+         <servlet-name >QDM REST Service</servlet-name >
+         <url-pattern >/rest/* </url-pattern >
+     </servlet-mapping >
+ </web-app >

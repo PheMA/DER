@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<enunciate xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://enunciate.webcohesion.com/schemas/enunciate-2.1.0.xsd">
+
+    <api-classes>
+        <include pattern="org.mayo.edu.phema.**"/>
+    </api-classes>
+
+    <title>DER</title>
+    
+    <version>Alpha</version>
+    
+    <description>PhEMA Data Element Repository</description>
+    
+    <namespaces>
+        <namespace uri="http://projectphema.org:8080/DER" id="services"/>
+    </namespaces>
+ 
+     <modules>
+            <swagger disabled="true" />
+    </modules>
+        
+</enunciate>
