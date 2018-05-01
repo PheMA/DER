@@ -1,0 +1,125 @@
+@prefix qdm: <http://rdf.healthit.gov/qdm/schema#> . 
+@prefix dc: <http://purl.org/dc/elements/1.1/> . 
+@prefix dcterms: <http://purl.org/dc/terms/> . 
+@prefix mms: <http://rdf.cdisc.org/mms#> . 
+@prefix owl: <http://www.w3.org/2002/07/owl#> . 
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> . 
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> . 
+@prefix qdm-4-1: <http://rdf.healthit.gov/qdm/element#> . 
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> . 
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> . 
+
+#### 4s-import <dbname> --add --model <uri> <this ttl filename> 
+
+<http://rdf.healthit.gov/qdm/element#NLP> 
+rdf:type qdm:QDMCategory ; 
+rdf:type mms:DataElement ; 
+rdfs:label "NLP Extension"^^xsd:string ; 
+mms:version qdm-4-1:qdm-4-1 ; 
+skos:definition "NLP Extension created by PhEMA project."^^xsd:string ; 
+mms:dataElementDescription "NLP Extension created by PhEMA project."^^xsd:string ; 
+mms:dataElementLabel "NLP Extension"^^xsd:string ; 
+mms:dataElementName "NLP"^^xsd:string ; 
+.
+
+<http://rdf.healthit.gov/qdm/element#UnstructuredDataDocument> 
+mms:context qdm-4-1:NLP; 
+rdf:type qdm:QDMDatatype ; 
+rdf:type mms:DataElement ; 
+rdfs:label "Unstructured Data, Document"^^xsd:string ; 
+mms:version qdm-4-1:qdm-4-1 ; 
+skos:definition "Unstructured Data, Document."^^xsd:string ; 
+mms:dataElementDescription "Unstructured Data, Document."^^xsd:string ; 
+mms:dataElementLabel "Unstructured Data, Document"^^xsd:string ; 
+mms:dataElementName "UnstructuredDataDocument"^^xsd:string ; 
+.
+
+<http://rdf.healthit.gov/qdm/element#UnstructuredDataDocument.DocumentSection> 
+mms:context qdm-4-1:UnstructuredDataDocument; 
+rdf:type qdm:QDMAttribute ; 
+rdf:type mms:DataElement ; 
+rdfs:label "Document Section"^^xsd:string ; 
+mms:version qdm-4-1:qdm-4-1 ; 
+skos:definition "Document Section."^^xsd:string ; 
+mms:dataElementDescription "Document Section."^^xsd:string ; 
+mms:dataElementLabel "Document Section"^^xsd:string ; 
+mms:dataElementName "DocumentSection"^^xsd:string ; 
+.
+
+<http://rdf.healthit.gov/qdm/element#UnstructuredDataDocument.Negation> 
+mms:context qdm-4-1:UnstructuredDataDocument; 
+rdf:type qdm:QDMAttribute ; 
+rdf:type mms:DataElement ; 
+rdfs:label "Negation"^^xsd:string ; 
+mms:version qdm-4-1:qdm-4-1 ; 
+skos:definition "Negation."^^xsd:string ; 
+mms:dataElementDescription "Negation."^^xsd:string ; 
+mms:dataElementLabel "Negation"^^xsd:string ; 
+mms:dataElementName "Negation"^^xsd:string ; 
+.
+
+<http://rdf.healthit.gov/qdm/element#UnstructuredDataDocument.Experiencer> 
+mms:context qdm-4-1:UnstructuredDataDocument; 
+rdf:type qdm:QDMAttribute ; 
+rdf:type mms:DataElement ; 
+rdfs:label "Experiencer"^^xsd:string ; 
+mms:version qdm-4-1:qdm-4-1 ; 
+skos:definition "Experiencer."^^xsd:string ; 
+mms:dataElementDescription "Experiencer."^^xsd:string ; 
+mms:dataElementLabel "Experiencer"^^xsd:string ; 
+mms:dataElementName "Experiencer"^^xsd:string ; 
+.
+
+<http://rdf.healthit.gov/qdm/element#UnstructuredDataDocument.Temporality> 
+mms:context qdm-4-1:UnstructuredDataDocument; 
+rdf:type qdm:QDMAttribute ; 
+rdf:type mms:DataElement ; 
+rdfs:label "Temporality"^^xsd:string ; 
+mms:version qdm-4-1:qdm-4-1 ; 
+skos:definition "Temporality."^^xsd:string ; 
+mms:dataElementDescription "Temporality."^^xsd:string ; 
+mms:dataElementLabel "Temporality"^^xsd:string ; 
+mms:dataElementName "Temporality"^^xsd:string ; 
+.
+
+<http://rdf.healthit.gov/qdm/element#UnstructuredDataDocument.Certainty> 
+mms:context qdm-4-1:UnstructuredDataDocument; 
+rdf:type qdm:QDMAttribute ; 
+rdf:type mms:DataElement ; 
+rdfs:label "Certainty"^^xsd:string ; 
+mms:version qdm-4-1:qdm-4-1 ; 
+skos:definition "Certainty."^^xsd:string ; 
+mms:dataElementDescription "Certainty."^^xsd:string ; 
+mms:dataElementLabel "Certainty"^^xsd:string ; 
+mms:dataElementName "Certainty"^^xsd:string ; 
+.
+
+<http://rdf.healthit.gov/qdm/element#UnstructuredDataDocument.Recorder> 
+mms:context qdm-4-1:UnstructuredDataDocument; 
+rdf:type qdm:QDMAttribute ; 
+rdf:type mms:DataElement ; 
+rdfs:label "Recorder"^^xsd:string ; 
+mms:version qdm-4-1:qdm-4-1 ; 
+skos:definition "Recorder."^^xsd:string ; 
+mms:dataElementDescription "Recorder."^^xsd:string ; 
+mms:dataElementLabel "Recorder"^^xsd:string ; 
+mms:dataElementName "Recorder"^^xsd:string ; 
+.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
