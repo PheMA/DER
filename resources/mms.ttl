@@ -1,0 +1,324 @@
+@prefix : <http://rdf.cdisc.org/mms#> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@base <http://rdf.cdisc.org/mms> .
+
+<http://rdf.cdisc.org/mms> rdf:type owl:Ontology ;
+                            owl:imports <http://www.w3.org/2004/02/skos/core> ;
+                            rdfs:label "CDISC Common Meta Model Schema"^^xsd:string ;
+                            skos:definition "The common CDISC Meta Model Schema defines a set of generic meta-model resources that provides a common language and infrastructure to describe the CDISC operational standards."^^xsd:string ;
+                            dc:creator "NCI EVS"^^xsd:string .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://rdf.cdisc.org/mms#contextLabel
+:contextLabel rdf:type owl:AnnotationProperty ;
+              rdfs:subPropertyOf skos:prefLabel .
+
+
+###  http://rdf.cdisc.org/mms#dataElementLabel
+:dataElementLabel rdf:type owl:AnnotationProperty ;
+                  rdfs:subPropertyOf skos:prefLabel .
+
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://rdf.cdisc.org/mms#broader
+:broader rdf:type owl:ObjectProperty ;
+         rdfs:domain :DataElement ;
+         rdfs:range :DataElement ;
+         rdfs:isDefinedBy <http://rdf.cdisc.org/mms> ;
+         rdfs:label "Broader"^^xsd:string ;
+         skos:definition "Relates a data element to another data element that is more general."^^xsd:string .
+
+
+###  http://rdf.cdisc.org/mms#context
+:context rdf:type owl:ObjectProperty ;
+         rdfs:domain :AdministeredItem ;
+         rdfs:range :Context ;
+         rdfs:isDefinedBy <http://rdf.cdisc.org/mms> ;
+         rdfs:label "Context"^^xsd:string ;
+         skos:definition "The context of an administered item."^^xsd:string .
+
+
+###  http://rdf.cdisc.org/mms#dataElement
+:dataElement rdf:type owl:ObjectProperty ;
+             rdfs:domain :DataElementContext ;
+             rdfs:range :DataElement ;
+             rdfs:isDefinedBy <http://rdf.cdisc.org/mms> ;
+             rdfs:label "Data Element"^^xsd:string ;
+             skos:definition "The data element that a data element context refers to."^^xsd:string .
+
+
+###  http://rdf.cdisc.org/mms#dataElementValueDomain
+:dataElementValueDomain rdf:type owl:ObjectProperty ;
+                        rdfs:domain :DataElement ;
+                        rdfs:range :ValueDomain ;
+                        rdfs:isDefinedBy <http://rdf.cdisc.org/mms> ;
+                        rdfs:label "Data Element Value Domain"^^xsd:string ;
+                        skos:definition "The value domain of a data element."^^xsd:string .
+
+
+###  http://rdf.cdisc.org/mms#inValueDomain
+:inValueDomain rdf:type owl:ObjectProperty ;
+               rdfs:domain :PermissibleValue ;
+               rdfs:range :EnumeratedValueDomain ;
+               rdfs:isDefinedBy <http://rdf.cdisc.org/mms> ;
+               rdfs:label "Value Domain"^^xsd:string ;
+               skos:definition "The enumerated value domain to which a permissible value belongs."^^xsd:string .
+
+
+###  http://rdf.cdisc.org/mms#subsetOf
+:subsetOf rdf:type owl:ObjectProperty ;
+          rdfs:domain :EnumeratedValueDomain ;
+          rdfs:range :EnumeratedValueDomain ;
+          rdfs:isDefinedBy <http://rdf.cdisc.org/mms> ;
+          rdfs:label "Parent Value Domain"^^xsd:string ;
+          skos:definition "Identifies the parent enumerated value domain of which this enumerated value domain is a subset of."^^xsd:string .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://rdf.cdisc.org/mms#contextDescription
+:contextDescription rdf:type owl:DatatypeProperty ;
+                    rdfs:domain :Context ;
+                    rdfs:range xsd:string ;
+                    rdfs:isDefinedBy <http://rdf.cdisc.org/mms> ;
+                    rdfs:label "Context Description"^^xsd:string ;
+                    skos:definition "The descriptive text documenting a context."^^xsd:string .
+
+
+###  http://rdf.cdisc.org/mms#contextLabel
+:contextLabel rdf:type owl:DatatypeProperty ;
+              rdfs:domain :Context ;
+              rdfs:range xsd:string .
+
+
+###  http://rdf.cdisc.org/mms#contextName
+:contextName rdf:type owl:DatatypeProperty ;
+             rdfs:domain :Context ;
+             rdfs:range xsd:string ;
+             rdfs:isDefinedBy <http://rdf.cdisc.org/mms> ;
+             rdfs:label "Context Name"^^xsd:string ;
+             skos:definition "The name of a context that uniquely identifies it within the registry."^^xsd:string .
+
+
+###  http://rdf.cdisc.org/mms#dataElementDescription
+:dataElementDescription rdf:type owl:DatatypeProperty ;
+                        rdfs:domain :DataElement ;
+                        rdfs:range xsd:string ;
+                        rdfs:isDefinedBy <http://rdf.cdisc.org/mms> ;
+                        rdfs:label "Data Element Description"^^xsd:string ;
+                        skos:definition "The descriptive text documenting a data element."^^xsd:string .
+
+
+###  http://rdf.cdisc.org/mms#dataElementLabel
+:dataElementLabel rdf:type owl:DatatypeProperty ;
+                  rdfs:domain :DataElement ;
+                  rdfs:range xsd:string .
+
+
+###  http://rdf.cdisc.org/mms#dataElementName
+:dataElementName rdf:type owl:DatatypeProperty ;
+                 rdfs:domain :DataElement ;
+                 rdfs:range xsd:string ;
+                 rdfs:isDefinedBy <http://rdf.cdisc.org/mms> ;
+                 rdfs:label "Data Element Name"^^xsd:string ;
+                 skos:definition "The name of a data element that uniquely identifies it within a context."^^xsd:string ;
+                 skos:note "A distinction must be made between the unique URI identifying a data element as a resource within the ontology and the name of a data element used to identify it within a context."^^xsd:string .
+
+
+###  http://rdf.cdisc.org/mms#dataElementType
+:dataElementType rdf:type owl:DatatypeProperty ;
+                 rdfs:domain :DataElement ;
+                 rdfs:range xsd:string ;
+                 rdfs:isDefinedBy <http://rdf.cdisc.org/mms> ;
+                 rdfs:label "Data Element Type"^^xsd:string ;
+                 skos:definition "The type of a data element, i.e. the values it can range over. The actual value space may be further restricted by the specification of a value domain."^^xsd:string .
+
+
+###  http://rdf.cdisc.org/mms#identifier
+:identifier rdf:type owl:DatatypeProperty ;
+            rdfs:domain :AdministeredItem ;
+            rdfs:range xsd:string ;
+            rdfs:isDefinedBy <http://rdf.cdisc.org/mms> ;
+            rdfs:label "Identifier"^^xsd:string ;
+            skos:definition "The identifier of an administered item."^^xsd:string .
+
+
+###  http://rdf.cdisc.org/mms#ordinal
+:ordinal rdf:type owl:DatatypeProperty ;
+         rdfs:domain :AdministeredItem ;
+         rdfs:range xsd:positiveInteger ;
+         rdfs:isDefinedBy <http://rdf.cdisc.org/mms> ;
+         rdfs:label "Ordinal"^^xsd:string ;
+         skos:definition "The ordinal of an administered item within a list of items."^^xsd:string .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://rdf.cdisc.org/mms#AdministeredItem
+:AdministeredItem rdf:type owl:Class ;
+                  rdfs:subClassOf owl:Thing ;
+                  rdfs:isDefinedBy <http://rdf.cdisc.org/mms> ;
+                  rdfs:label "Administered Item"^^xsd:string ;
+                  skos:definition "Any resource for which administrative information is recorded in an administration record."^^xsd:string .
+
+
+###  http://rdf.cdisc.org/mms#Classifier
+:Classifier rdf:type owl:Class ;
+            rdfs:subClassOf :AdministeredItem ;
+            rdfs:isDefinedBy <http://rdf.cdisc.org/mms> ;
+            rdfs:label "Classifier"^^xsd:string ;
+            skos:definition "A classifier defines a characteristic that can be used to organize a set of administered items into a discrete family of subsets."^^xsd:string ;
+            skos:example "SDTM classifies variables to be either required, or expected, or permissible."^^xsd:string .
+
+
+###  http://rdf.cdisc.org/mms#Column
+:Column rdf:type owl:Class ;
+        rdfs:subClassOf :DataElementContext ;
+        rdfs:isDefinedBy <http://rdf.cdisc.org/mms> ;
+        rdfs:label "Column"^^xsd:string ;
+        skos:definition "A column is a data element in the context of a dataset and may add context dependent properties such as the ordinal number within the dataset."^^xsd:string .
+
+
+###  http://rdf.cdisc.org/mms#Context
+:Context rdf:type owl:Class ;
+         rdfs:subClassOf :AdministeredItem ;
+         rdfs:isDefinedBy <http://rdf.cdisc.org/mms> ;
+         rdfs:label "Context"^^xsd:string ;
+         skos:definition "Each administered item is named and defined within one or more contexts. A context defines the scope within which the subject data has meaning. A context may be a business domain, an information subject area, an information system, a database, file, data model, standard document, or any other environment determined by the owner of the registry. Each context is itself managed as an administered item within the registry and is given a name and a definition."^^xsd:string .
+
+
+###  http://rdf.cdisc.org/mms#DataCollectionField
+:DataCollectionField rdf:type owl:Class ;
+                     rdfs:subClassOf :DataElementContext ;
+                     rdfs:isDefinedBy <http://rdf.cdisc.org/mms> ;
+                     rdfs:label "Data Collection Field"^^xsd:string ;
+                     skos:definition "A data collection field is a data element in the context of a data collection form and may add context dependent properties such as optional or required."^^xsd:string .
+
+
+###  http://rdf.cdisc.org/mms#DataCollectionForm
+:DataCollectionForm rdf:type owl:Class ;
+                    rdfs:subClassOf :Context ;
+                    rdfs:isDefinedBy <http://rdf.cdisc.org/mms> ;
+                    rdfs:label "Data Collection Form"^^xsd:string ;
+                    skos:definition "Context to group a set of data collection fields."^^xsd:string .
+
+
+###  http://rdf.cdisc.org/mms#DataElement
+:DataElement rdf:type owl:Class ;
+             rdfs:subClassOf :AdministeredItem ;
+             rdfs:isDefinedBy <http://rdf.cdisc.org/mms> ;
+             rdfs:label "Data Element"^^xsd:string ;
+             skos:definition "Unit of data that is considered in context to be indivisible."^^xsd:string .
+
+
+###  http://rdf.cdisc.org/mms#DataElementContext
+:DataElementContext rdf:type owl:Class ;
+                    rdfs:subClassOf :DataElement ;
+                    rdfs:isDefinedBy <http://rdf.cdisc.org/mms> ;
+                    rdfs:label "Data Element Context"^^xsd:string ;
+                    skos:definition "A data element context maps a data element to a context and describes context dependent properties of that data element."^^xsd:string .
+
+
+###  http://rdf.cdisc.org/mms#Dataset
+:Dataset rdf:type owl:Class ;
+         rdfs:subClassOf :Context ;
+         rdfs:isDefinedBy <http://rdf.cdisc.org/mms> ;
+         rdfs:label "Dataset"^^xsd:string ;
+         skos:definition "Context to group a set of dataset variables, e.g. SDTM IG Adverse Event domain."^^xsd:string .
+
+
+###  http://rdf.cdisc.org/mms#DatasetContext
+:DatasetContext rdf:type owl:Class ;
+                rdfs:subClassOf :Context ;
+                rdfs:isDefinedBy <http://rdf.cdisc.org/mms> ;
+                rdfs:label "Dataset Context"^^xsd:string ;
+                skos:definition "Context to group related data sets, e.g. Events Observation Class."^^xsd:string .
+
+
+###  http://rdf.cdisc.org/mms#Domain
+:Domain rdf:type owl:Class ;
+        rdfs:subClassOf :Context ;
+        rdfs:isDefinedBy <http://rdf.cdisc.org/mms> ;
+        rdfs:label "Data Element Domain"^^xsd:string ;
+        skos:definition "Context to group a set of related data elements."^^xsd:string .
+
+
+###  http://rdf.cdisc.org/mms#DomainContext
+:DomainContext rdf:type owl:Class ;
+               rdfs:subClassOf :Context ;
+               rdfs:isDefinedBy <http://rdf.cdisc.org/mms> ;
+               rdfs:label "Domain Context"^^xsd:string ;
+               skos:definition "Context to group related domains."^^xsd:string .
+
+
+###  http://rdf.cdisc.org/mms#EnumeratedValueDomain
+:EnumeratedValueDomain rdf:type owl:Class ;
+                       rdfs:subClassOf :ValueDomain ;
+                       rdfs:isDefinedBy <http://rdf.cdisc.org/mms> ;
+                       rdfs:label "Enumerated Value Domain"^^xsd:string ;
+                       skos:definition "A Value Domain that is specified by a list of all its Permissible Values."^^xsd:string .
+
+
+###  http://rdf.cdisc.org/mms#Model
+:Model rdf:type owl:Class ;
+       rdfs:subClassOf :Context ;
+       rdfs:isDefinedBy <http://rdf.cdisc.org/mms> ;
+       rdfs:label "Model"^^xsd:string ;
+       skos:definition "Top-level context for all model elements, e.g. SDTM 3.1.2."^^xsd:string .
+
+
+###  http://rdf.cdisc.org/mms#PermissibleValue
+:PermissibleValue rdf:type owl:Class ;
+                  rdfs:subClassOf :AdministeredItem ;
+                  rdfs:isDefinedBy <http://rdf.cdisc.org/mms> ;
+                  rdfs:label "Permissible Value"^^xsd:string ;
+                  skos:definition "A permissible value is a designation, binding of signs (value) to a corresponding value meaning."^^xsd:string .
+
+
+###  http://rdf.cdisc.org/mms#ValueDomain
+:ValueDomain rdf:type owl:Class ;
+             rdfs:subClassOf :AdministeredItem ;
+             rdfs:isDefinedBy <http://rdf.cdisc.org/mms> ;
+             rdfs:label "Value Domain"^^xsd:string ;
+             skos:definition "A value domain is a collection of permissible values. A value domain provides representation, but has no implication as to what data element concept the values are associated with, nor what the values mean."^^xsd:string .
+
+
+###  http://rdf.cdisc.org/mms#VariableGrouping
+:VariableGrouping rdf:type owl:Class ;
+                  rdfs:subClassOf :Context ;
+                  rdfs:isDefinedBy <http://rdf.cdisc.org/mms> ;
+                  rdfs:label "Variable Grouping"^^xsd:string ;
+                  skos:definition "Context to group a set of data elements, e.g. SDTM Timing Variables."^^xsd:string .
+
+
+#################################################################
+#    Annotations
+#################################################################
+
+:contextLabel skos:definition "Short descriptive label of a context."^^xsd:string ;
+              rdfs:label "Context Label"^^xsd:string ;
+              rdfs:isDefinedBy <http://rdf.cdisc.org/mms> .
+
+
+:dataElementLabel skos:definition "Short descriptive label of a data element."^^xsd:string ;
+                  rdfs:label "Data Element Label"^^xsd:string ;
+                  rdfs:isDefinedBy <http://rdf.cdisc.org/mms> .
+
+
+###  Generated by the OWL API (version 4.2.8.20170104-2310) https://github.com/owlcs/owlapi
