@@ -4,18 +4,48 @@
     <artifactId>DER</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>war</packaging>
-  
+
     <dependencies>
+        <!-- https://mvnrepository.com/artifact/com.blazegraph/bigdata-core -->
         <dependency>
-            <groupId>com.sun.jersey</groupId>
-            <artifactId>jersey-server</artifactId>
-            <version>1.7</version>
+            <groupId>com.blazegraph</groupId>
+            <artifactId>bigdata-core</artifactId>
+            <version>2.1.4</version>
         </dependency>
+
         <dependency>
             <groupId>com.sun.jersey</groupId>
             <artifactId>jersey-json</artifactId>
-            <version>1.7</version>
+            <version>1.18.1</version>
         </dependency>
+        <dependency>
+            <groupId>com.owlike</groupId>
+            <artifactId>genson</artifactId>
+            <version>0.99</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/com.sun.jersey/jersey-bundle -->
+        <dependency>
+            <groupId>com.sun.jersey</groupId>
+            <artifactId>jersey-bundle</artifactId>
+            <version>1.8-ea03</version>
+        </dependency>
+        <dependency>
+            <groupId>asm</groupId>
+            <artifactId>asm</artifactId>
+            <version>3.3.1</version>
+        </dependency>
+
+<!--        <dependency>-->
+<!--            <groupId>com.sun.jersey</groupId>-->
+<!--            <artifactId>jersey-server</artifactId>-->
+<!--            <version>1.7</version>-->
+<!--        </dependency>-->
+<!--        <dependency>-->
+<!--            <groupId>com.sun.jersey</groupId>-->
+<!--            <artifactId>jersey-json</artifactId>-->
+<!--            <version>1.7</version>-->
+<!--        </dependency>-->
         <dependency>
             <groupId>javax.inject</groupId>
             <artifactId>javax.inject</artifactId>
@@ -52,7 +82,22 @@
           <version>2.3.0</version>
         </dependency>
 
-        
+        <!-- https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-api -->
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-api</artifactId>
+            <version>5.6.0</version>
+            <scope>test</scope>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.json/json -->
+        <dependency>
+            <groupId>org.json</groupId>
+            <artifactId>json</artifactId>
+            <version>20190722</version>
+        </dependency>
+
+
     </dependencies>
 
     <build>

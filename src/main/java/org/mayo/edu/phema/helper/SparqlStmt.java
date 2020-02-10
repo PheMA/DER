@@ -15,27 +15,37 @@ public class SparqlStmt {
             +" PREFIX qdm: <http://rdf.healthit.gov/qdm/schema#>  "
             +" PREFIX fhir: <http://rdf.hl7.org/fhir/schema#>";
             
-    private static String PREFIX_QDM = " PREFIX qdm-4-1: <http://rdf.healthit.gov/qdm/element#> ";
+    private static String PREFIX_QDM = " PREFIX qdm-5-4: <http://rdf.healthit.gov/qdm/element#> ";
 
-    private static String PREFIX_FHIR = " PREFIX fhir-1-0-1: <http://rdf.hl7.org/fhir/fhir-1-0-1#> ";
-    
-    private static String VERSION_FHIR = "?id mms:version fhir-1-0-1:fhir-1-0-1 .";
-            
+    private static String PREFIX_FHIR = " PREFIX fhir-3-0-1: <http://rdf.hl7.org/fhir/fhir-3-0-1#> ";
+
+    private static String PREFIX_CQL = " PREFIX cql-1-4: <http://cql.hl7.org/element#>  ";
+
+    private static String VERSION_FHIR = "?id mms:version fhir-3-0-1:fhir-3-0-1 .";
+
+    private static String VERSION_CQL = "?id mms:version cql-1-4:cql-1-4 .";
+
     private static String SELECT = " SELECT * WHERE { ";
     
-    private static String QDM_TYPE = " ?id mms:version qdm-4-1:qdm-4-1 . ";
+    private static String QDM_TYPE = " ?id mms:version qdm-5-4:qdm-5-4 . ";
     
     private static String FHIR_TYPE = " ?id rdf:type fhir:Resource . ";
+
+    private static String CQL_TYPE = " ?id rdf:type fhir:Resource . ";
     
     private static String ALL_START = PREFIX + SELECT;
     
     private static String QDM_START = PREFIX + PREFIX_QDM + SELECT +QDM_TYPE;
     
     private static String FHIR_START = PREFIX + PREFIX_FHIR + SELECT + FHIR_TYPE + VERSION_FHIR;
+
+    private static String CQL_START = PREFIX + PREFIX_CQL + SELECT + VERSION_CQL;
+
+    private static String CONTEXT_QDM = " ?id mms:context qdm-5-4:";
     
-    private static String CONTEXT_QDM = " ?id mms:context qdm-4-1:";
-    
-    private static String CONTEXT_FHIR = " ?id mms:context fhir-0-5-0:";
+    private static String CONTEXT_FHIR = " ?id mms:context fhir-3-0-1:";
+
+    private static String CONTEXT_CQL = " ?id mms:context cql-1-4:";
     
     private static String FILTER_NAME = " FILTER (STR(?dataElementName)='";
     
@@ -86,19 +96,25 @@ public class SparqlStmt {
     public static String QDM_CATEGORIES = QDM_START + CATEGORY + END;
     
     public static String FHIR_CATEGORIES = FHIR_START + CATEGORY + END;
-    
+
+    public static String CQL_CATEGORIES = CQL_START + CATEGORY + END;
+
     public static String DATATYPES = ALL_START + DATATYPE + END;
     
     public static String QDM_DATATYPES = QDM_START + DATATYPE + END;
     
     public static String FHIR_DATATYPES = FHIR_START + DATATYPE + END;
-    
+
+    public static String CQL_DATATYPES = CQL_START + DATATYPE + END;
+
     public static String ATTRIBUTES = ALL_START + ATTRIBUTE + END;
     
     public static String QDM_ATTRIBUTES = QDM_START + ATTRIBUTE + END;
     
     public static String FHIR_ATTRIBUTES = FHIR_START + ATTRIBUTE + END;
-    
+
+    public static String CQL_ATTRIBUTES = CQL_START + ATTRIBUTE + END;
+
     public static String LOGICAL_OPERATORS = ALL_START + LOGICAL + END;
     
     public static String QDM_LOGICAL_OPERATORS = QDM_START + LOGICAL + END;
@@ -130,8 +146,12 @@ public class SparqlStmt {
     
     public static String getFhirCategoryStatement(String categoryName)  {
         return FHIR_START + CATEGORY + VERSION_FHIR + OPTIONAL + FILTER_NAME + categoryName + PAREN + POSTFIX;
-    } 
-    
+    }
+
+    public static String getCqlCategoryStatement(String categoryName)  {
+        return CQL_START + CATEGORY + VERSION_CQL + OPTIONAL + FILTER_NAME + categoryName + PAREN + POSTFIX;
+    }
+
     // get a specific datatype based on its name    
     public static String getQdmDatatypeStatement(String datatypeName)  {
         return QDM_START + DATATYPE + OPTIONAL + FILTER_NAME + datatypeName + PAREN + POSTFIX;
@@ -139,8 +159,12 @@ public class SparqlStmt {
     
     public static String getFhirDatatypeStatement(String datatypeName)  {
         return FHIR_START + DATATYPE + VERSION_FHIR + OPTIONAL + FILTER_NAME + datatypeName + PAREN + POSTFIX;
-    } 
-    
+    }
+
+    public static String getCqlDatatypeStatement(String datatypeName)  {
+        return CQL_START + DATATYPE + VERSION_CQL + OPTIONAL + FILTER_NAME + datatypeName + PAREN + POSTFIX;
+    }
+
     // get all datatypes for a specific category    
     public static String getQdmDatatypesForCategoryStatement(String categoryName)  {
         return QDM_START + DATATYPE + CONTEXT_QDM +categoryName + PER + OPTIONAL + POSTFIX;
@@ -149,14 +173,22 @@ public class SparqlStmt {
     public static String getFhirDatatypesForCategoryStatement(String categoryName)  {
         return FHIR_START + DATATYPE + VERSION_FHIR + CONTEXT_FHIR +categoryName + PER + OPTIONAL + POSTFIX;
     }
+
+    public static String getCqlDatatypesForCategoryStatement(String categoryName)  {
+        return CQL_START + DATATYPE + CONTEXT_CQL +categoryName + PER + OPTIONAL + POSTFIX;
+    }
     
     // get a specific datatype for a specific category 
     public static String getQdmDatatypeForCategoryStatement(String categoryName, String datatypeName)  {
-        return QDM_START + DATATYPE + VERSION_FHIR +  CONTEXT_QDM +categoryName + PER + OPTIONAL + FILTER_NAME + datatypeName + PAREN + POSTFIX;
+        return QDM_START + DATATYPE +  CONTEXT_QDM +categoryName + PER + OPTIONAL + FILTER_NAME + datatypeName + PAREN + POSTFIX;
     }
     
     public static String getFhirDatatypeForCategoryStatement(String categoryName, String datatypeName)  {
         return FHIR_START + DATATYPE + VERSION_FHIR + CONTEXT_FHIR +categoryName + PER + OPTIONAL + FILTER_NAME + datatypeName + PAREN + POSTFIX;
+    }
+
+    public static String getCqlDatatypeForCategoryStatement(String categoryName, String datatypeName)  {
+        return CQL_START + DATATYPE + CONTEXT_CQL +categoryName + PER + OPTIONAL + FILTER_NAME + datatypeName + PAREN + POSTFIX;
     }
     
     // get all attributes for a specific datatype    
@@ -184,7 +216,11 @@ public class SparqlStmt {
     public static String getFhirAttributesForDatatypeStatement(String datatypeName)  {
         return FHIR_START + ATTRIBUTE + VERSION_FHIR + OPTIONAL + FILTER_CONTEXT + datatypeName + PAREN +")" + POSTFIX;
     }
-    
+
+    public static String getCqlAttributesForDatatypeStatement(String datatypeName)  {
+        return CQL_START + ATTRIBUTE + VERSION_CQL + OPTIONAL + FILTER_CONTEXT + datatypeName + PAREN +")" + POSTFIX;
+    }
+
     // get all attribute with a specific name
     public static String getQdmAttributesStatement(String attributeName)  {
         return QDM_START + ATTRIBUTE + OPTIONAL + FILTER_NAME + attributeName + PAREN + POSTFIX;
@@ -192,6 +228,10 @@ public class SparqlStmt {
     
     public static String getFhirAttributesStatement(String attributeName)  {
         return FHIR_START + ATTRIBUTE + VERSION_FHIR + OPTIONAL + FILTER_NAME + attributeName + PAREN + POSTFIX;
+    }
+
+    public static String getCqlAttributesStatement(String attributeName)  {
+        return CQL_START + ATTRIBUTE + VERSION_CQL + OPTIONAL + FILTER_NAME + attributeName + PAREN + POSTFIX;
     }
     
     // get a specific attribute for a specific datatype
@@ -206,7 +246,15 @@ public class SparqlStmt {
         String fullName = datatypeName +"." +attributeName;
         String stmt = FHIR_START + ATTRIBUTE + VERSION_FHIR + OPTIONAL + 
                 " FILTER (REGEX(STR(?id), \"" +fullName +"\", \"i\"))" + POSTFIX;
-        System.out.println(stmt);
+        //System.out.println(stmt);
+        return stmt;
+    }
+
+    public static String getCqlAttributeForDatatypeStatement(String datatypeName, String attributeName)  {
+        String fullName = datatypeName +"." +attributeName;
+        String stmt = CQL_START + ATTRIBUTE + VERSION_CQL + OPTIONAL +
+                " FILTER (REGEX(STR(?id), \"" +fullName +"\", \"i\"))" + POSTFIX;
+        //System.out.println(stmt);
         return stmt;
     }
 

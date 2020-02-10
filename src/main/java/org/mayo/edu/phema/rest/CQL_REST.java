@@ -1,5 +1,6 @@
 package org.mayo.edu.phema.rest;
 
+import org.mayo.edu.phema.helper.SparqlStmt;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -8,27 +9,26 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
-import org.mayo.edu.phema.helper.SparqlStmt;
 
 /**
- * This class contains the REST service calls pertaining to FHIR data elements.
+ * This class contains the REST service calls pertaining to CQL data elements.
  */
-@Path("/fhir")
-public class FHIR_REST extends ElementRest {
-    
+@Path("/cql")
+public class CQL_REST extends ElementRest {
+
    /**
-    * Returns all FHIR Categories
+    * Returns all CQL Categories
     * @return  JSON Response
     */
    @GET
    @Path("/categories")
    @Produces(MediaType.APPLICATION_JSON)
    public Response getCategories() {
-       return queryRepository(SparqlStmt.FHIR_CATEGORIES);
+       return queryRepository(SparqlStmt.CQL_CATEGORIES);
    }
    
    /**
-    * Returns a specified FHIR Category
+    * Returns a specified CQL Category
     * @param category is the name of the Category
     * @return JSON Response
     */
@@ -36,23 +36,23 @@ public class FHIR_REST extends ElementRest {
    @Path("/category/{category}")
    @Produces(MediaType.APPLICATION_JSON)
    public Response getCategory(@PathParam("category") String category) {
-       System.out.println (SparqlStmt.getFhirCategoryStatement(category));
-       return queryRepository(SparqlStmt.getFhirCategoryStatement(category));
+       System.out.println (SparqlStmt.getCqlCategoryStatement(category));
+       return queryRepository(SparqlStmt.getCqlCategoryStatement(category));
    }
    
    /**
-    * Returns all FHIR Datatypes
+    * Returns all CQL Datatypes
     * @return JSON Response
     */
    @GET
    @Path("/datatypes")
    @Produces(MediaType.APPLICATION_JSON)
    public Response getDatatypes( ) {
-       return queryRepository(SparqlStmt.FHIR_DATATYPES);
+       return queryRepository(SparqlStmt.CQL_DATATYPES);
    }
    
    /**
-    * Returns a specified FHIR Datatype
+    * Returns a specified CQL Datatype
     * @param datatype is the name of the datatype
     * @return JSON Response
     */
@@ -60,11 +60,11 @@ public class FHIR_REST extends ElementRest {
    @Path("/datatype/{datatype}")
    @Produces(MediaType.APPLICATION_JSON)
    public Response getDatatype(@PathParam("datatype") String datatype) {
-       return queryRepository(SparqlStmt.getFhirDatatypeStatement(datatype));
+       return queryRepository(SparqlStmt.getCqlDatatypeStatement(datatype));
    }
    
    /**
-    * Returns all FHIR Datatypes based on a specific FHRI Category
+    * Returns all CQL Datatypes based on a specific CQL Category
     * @param category is the name of the Category
     * @return JSON Response
     */
@@ -72,11 +72,11 @@ public class FHIR_REST extends ElementRest {
    @Path("/category/{category}/datatypes")
    @Produces(MediaType.APPLICATION_JSON)
    public Response getCategoryDatatypes(@PathParam("category") String category) {
-       return queryRepository(SparqlStmt.getFhirDatatypesForCategoryStatement(category));
+       return queryRepository(SparqlStmt.getCqlDatatypesForCategoryStatement(category));
    }
    
    /**
-    * Returns a specified FHIR Datatype for a specific FHIR Category
+    * Returns a specified CQL Datatype for a specific CQL Category
     * @param category is the name of the category
     * @param datatype is the name of the datatype
     * @return JSON Response
@@ -85,22 +85,22 @@ public class FHIR_REST extends ElementRest {
    @Path("category/{category}/datatype/{datatype}")
    @Produces(MediaType.APPLICATION_JSON)
    public Response getCategoryDatatype(@PathParam("category") String category, @PathParam("datatype") String datatype) {
-       return queryRepository(SparqlStmt.getFhirDatatypeForCategoryStatement(category, datatype));
+       return queryRepository(SparqlStmt.getCqlDatatypeForCategoryStatement(category, datatype));
    }
    
    /**
-    * Returns all FHIR Attributes
+    * Returns all CQL Attributes
     * @return JSON Response
     */
    @GET
    @Path("/attributes")
    @Produces(MediaType.APPLICATION_JSON)
    public Response getAttributes() {
-       return queryRepository(SparqlStmt.FHIR_ATTRIBUTES);
+       return queryRepository(SparqlStmt.CQL_ATTRIBUTES);
    }
    
    /**
-    * Returns all FHIR attributes based on the name of the datatype
+    * Returns all CQL attributes based on the name of the datatype
     * @param datatype is the name of the datatype
     * @return JSON Response
     */
@@ -108,11 +108,11 @@ public class FHIR_REST extends ElementRest {
    @Path("/datatype/{datatype}/attributes")
    @Produces(MediaType.APPLICATION_JSON)
    public Response getDatatypeAttributes(@PathParam("datatype") String datatype) {
-       return queryRepository(SparqlStmt.getFhirAttributesForDatatypeStatement(datatype));
+       return queryRepository(SparqlStmt.getCqlAttributesForDatatypeStatement(datatype));
    }
    
    /**
-    * Returns a specified FHIR Attribute for a specific FHIR Datatype
+    * Returns a specified CQL Attribute for a specific CQL Datatype
     * @param datatype is the name of the datatype
     * @param attribute is the name of the attribute
     * @return JSON Response
@@ -121,11 +121,11 @@ public class FHIR_REST extends ElementRest {
    @Path("/datatype/{datatype}/attribute/{attribute}")
    @Produces(MediaType.APPLICATION_JSON)
    public Response getDatatypeAttribute(@PathParam("datatype") String datatype, @PathParam("attribute") String attribute) {
-       return queryRepository(SparqlStmt.getFhirAttributeForDatatypeStatement(datatype, attribute));
+       return queryRepository(SparqlStmt.getCqlAttributeForDatatypeStatement(datatype, attribute));
    }
    
    /**
-    * Returns a specified FHIR Attribute
+    * Returns a specified CQL Attribute
     * @param attribute is the name of the attribute
     * @return JSON Response
     */
@@ -133,8 +133,10 @@ public class FHIR_REST extends ElementRest {
    @Path("/attribute/{attribute}")
    @Produces(MediaType.APPLICATION_JSON)
    public Response getAttributes(@PathParam("attribute") String attribute) {
-       return queryRepository(SparqlStmt.getFhirAttributesStatement(attribute));
+       return queryRepository(SparqlStmt.getCqlAttributesStatement(attribute));
    }
+   
+
 
 
 
