@@ -1,7 +1,7 @@
 package org.mayo.edu.phema;
 
 
-import org.mayo.edu.phema.rest.FHIR_REST;
+import org.mayo.edu.phema.rest.FhirRest;
 import javax.ws.rs.core.Response;
 
 import org.junit.jupiter.api.Test;
@@ -11,71 +11,72 @@ public class FhirTest {
 
     @Test
     void testCategories() {
-        FHIR_REST fhir_rest = new FHIR_REST();
-        Response response = fhir_rest.getCategories();
+        FhirRest fhirRest = new FhirRest();
+        Response response = fhirRest.getCategories();
+        System.out.println(response.getEntity().toString());
         assertEquals(200, response.getStatus());
     }
 
     @Test
     void testCategory() {
-        FHIR_REST fhir_rest = new FHIR_REST();
-        Response response = fhir_rest.getCategory("AllergyIntolerance");
+        FhirRest fhirRest = new FhirRest();
+        Response response = fhirRest.getCategory("AllergyIntolerance");
         assertEquals(200, response.getStatus());
     }
 
     @Test
     void testDatatypes( ) {
-        FHIR_REST fhir_rest = new FHIR_REST();
-        Response response = fhir_rest.getDatatypes();
+        FhirRest fhirRest = new FhirRest();
+        Response response = fhirRest.getDatatypes();
         assertEquals(200, response.getStatus());
     }
 
     @Test
     void testDatatype() {
-        FHIR_REST fhir_rest = new FHIR_REST();
-        Response response = fhir_rest.getDatatype("AllergyIntolerance");
+        FhirRest fhirRest = new FhirRest();
+        Response response = fhirRest.getDatatype("AllergyIntolerance");
         assertEquals(200, response.getStatus());
     }
 
     @Test
     void testCategoryDatatypes() {
-        FHIR_REST fhir_rest = new FHIR_REST();
-        Response response = fhir_rest.getCategoryDatatypes("AllergyIntolerance");
+        FhirRest fhirRest = new FhirRest();
+        Response response = fhirRest.getCategoryDatatypes("AllergyIntolerance");
         assertEquals(200, response.getStatus());
     }
 
     @Test
     void testCategoryDatatype() {
-        FHIR_REST fhir_rest = new FHIR_REST();
-        Response response = fhir_rest.getCategoryDatatype("AllergyIntolerance", "AllergyIntolerance");
+        FhirRest fhirRest = new FhirRest();
+        Response response = fhirRest.getCategoryDatatype("AllergyIntolerance", "AllergyIntolerance");
         assertEquals(200, response.getStatus());
     }
 
     @Test
     void testAttributes() {
-        FHIR_REST fhir_rest = new FHIR_REST();
-        Response response = fhir_rest.getAttributes();
+        FhirRest fhirRest = new FhirRest();
+        Response response = fhirRest.getAttributes();
         assertEquals(200, response.getStatus());
     }
 
     @Test
     void testDatatypeAttributes(  ) {
-        FHIR_REST fhir_rest = new FHIR_REST();
-        Response response = fhir_rest.getDatatypeAttributes("AllergyIntolerance");
+        FhirRest fhirRest = new FhirRest();
+        Response response = fhirRest.getDatatypeAttributes("AllergyIntolerance");
         assertEquals(200, response.getStatus());
     }
 
     @Test
     void testDatatypeAttribute() {
-        FHIR_REST fhir_rest = new FHIR_REST();
-        Response response = fhir_rest.getDatatypeAttribute("AllergyIntolerance", "Asserter");
+        FhirRest fhirRest = new FhirRest();
+        Response response = fhirRest.getDatatypeAttribute("AllergyIntolerance", "Asserter");
         assertEquals(200, response.getStatus());
     }
 
     @Test
     void testAttributesAttribute() {
-        FHIR_REST fhir_rest = new FHIR_REST();
-        Response response = fhir_rest.getAttributes("Asserter");
+        FhirRest fhirRest = new FhirRest();
+        Response response = fhirRest.getAttributes("Asserter");
         assertEquals(200, response.getStatus());
     }
 }

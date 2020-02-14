@@ -1,6 +1,9 @@
 package org.mayo.edu.phema.rest;
 
 import com.bigdata.rdf.sail.webapp.client.RemoteRepositoryManager;
+
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
 import org.openrdf.query.TupleQueryResult;
 import org.openrdf.query.resultio.QueryResultIO;
 import org.openrdf.query.resultio.TupleQueryResultFormat;
@@ -8,9 +11,10 @@ import org.openrdf.query.resultio.TupleQueryResultFormat;
 import javax.ws.rs.core.Response;
 import java.io.ByteArrayOutputStream;
 
-public class ElementRest {
+public abstract class ElementRest {
 
-    private static final String serviceURL = "http://23.101.174.173:9999/blazegraph";
+    //private static final String sparqlEndpoint = "http://23.101.174.173:9999/blazegraph";
+    private static final String sparqlEndpoint = "http://52.23.162.55:9999/blazegraph";
 
     protected Response queryRepository(String sparql)  {
         Response response = null;
@@ -18,7 +22,7 @@ public class ElementRest {
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
 
         final RemoteRepositoryManager repo = new RemoteRepositoryManager(
-                serviceURL, false);
+                sparqlEndpoint, false);
 
         try {
             result = repo.getRepositoryForDefaultNamespace()
@@ -26,8 +30,12 @@ public class ElementRest {
                     .evaluate();
 
             QueryResultIO.write(result, TupleQueryResultFormat.JSON, baos);
-            //System.out.println(baos.toString());
-            response = Response.status(200).entity(baos.toString()).build();
+            String respString = baos.toString();
+
+            JSONParser parser = new JSONParser();
+            JSONObject json = (JSONObject) parser.parse(respString);
+
+            response = Response.status(200).entity(json).build();
 
         } catch(Exception e ) {
             response = Response.status(400).entity(e.getMessage()).build();;

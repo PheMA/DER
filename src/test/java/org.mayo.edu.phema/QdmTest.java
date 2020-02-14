@@ -1,6 +1,6 @@
 package org.mayo.edu.phema;
 
-import org.mayo.edu.phema.rest.QDM_REST;
+import org.mayo.edu.phema.rest.QdmRest;
 import javax.ws.rs.core.Response;
 
 import org.junit.jupiter.api.Test;
@@ -10,71 +10,71 @@ public class QdmTest {
 
     @Test
     void testCategories() {
-        QDM_REST qdm_rest = new QDM_REST();
-        Response response = qdm_rest.getCategories();
+        QdmRest qdmRest = new QdmRest();
+        Response response = qdmRest.getCategories();
         assertEquals(200, response.getStatus());
     }
 
     @Test
     void testCategory() {
-        QDM_REST qdm_rest = new QDM_REST();
-        Response response = qdm_rest.getCategory("AdverseEvent");
+        QdmRest qdmRest = new QdmRest();
+        Response response = qdmRest.getCategory("AdverseEvent");
         assertEquals(200, response.getStatus());
     }
 
     @Test
     void testDatatypes( ) {
-        QDM_REST qdm_rest = new QDM_REST();
-        Response response = qdm_rest.getDatatypes();
+        QdmRest qdmRest = new QdmRest();
+        Response response = qdmRest.getDatatypes();
         assertEquals(200, response.getStatus());
     }
 
     @Test
     void testDatatype() {
-        QDM_REST qdm_rest = new QDM_REST();
-        Response response = qdm_rest.getDatatype("AdverseEvent");
+        QdmRest qdmRest = new QdmRest();
+        Response response = qdmRest.getDatatype("AdverseEvent");
         assertEquals(200, response.getStatus());
     }
 
     @Test
     void testCategoryDatatypes() {
-        QDM_REST qdm_rest = new QDM_REST();
-        Response response = qdm_rest.getCategoryDatatypes("AdverseEvent");
+        QdmRest qdmRest = new QdmRest();
+        Response response = qdmRest.getCategoryDatatypes("AdverseEvent");
         assertEquals(200, response.getStatus());
     }
 
     @Test
     void testCategoryDatatype() {
-        QDM_REST qdm_rest = new QDM_REST();
-        Response response = qdm_rest.getCategoryDatatype("AdverseEvent", "AdverseEvent");
+        QdmRest qdmRest = new QdmRest();
+        Response response = qdmRest.getCategoryDatatype("AdverseEvent", "AdverseEvent");
         assertEquals(200, response.getStatus());
     }
 
     @Test
     void testAttributes() {
-        QDM_REST qdm_rest = new QDM_REST();
-        Response response = qdm_rest.getAttributes();
+        QdmRest qdmRest = new QdmRest();
+        Response response = qdmRest.getAttributes();
         assertEquals(200, response.getStatus());
     }
 
     @Test
     void testDatatypeAttributes(  ) {
-        QDM_REST qdm_rest = new QDM_REST();
-        Response response = qdm_rest.getDatatypeAttributes("AdverseEvent");
+        QdmRest qdmRest = new QdmRest();
+        Response response = qdmRest.getDatatypeAttributes("AdverseEvent");
         assertEquals(200, response.getStatus());
     }
 
     @Test
     void testDatatypeAttribute() {
-        QDM_REST qdm_rest = new QDM_REST();
-        Response response = qdm_rest.getDatatypeAttribute("AdverseEvent", "RelevantPeriod");
+        QdmRest qdmRest = new QdmRest();
+        Response response = qdmRest.getDatatypeAttribute("AdverseEvent", "RelevantPeriod");
         assertEquals(200, response.getStatus());
     }
 
     @Test
     void testAttributesAttribute() {
-        QDM_REST qdm_rest = new QDM_REST();
-        Response response = qdm_rest.getAttributes("RelevantPeriod");
+        QdmRest qdmRest = new QdmRest();
+        Response response = qdmRest.getAttributes("RelevantPeriod");
         assertEquals(200, response.getStatus());
     }
 

@@ -1,6 +1,6 @@
 package org.mayo.edu.phema;
 
-import org.mayo.edu.phema.rest.CQL_REST;
+import org.mayo.edu.phema.rest.CqlRest;
 import javax.ws.rs.core.Response;
 
 import org.junit.jupiter.api.Test;
@@ -10,71 +10,71 @@ public class CqlTest {
 
     @Test
     void testCategories() {
-        CQL_REST cql_rest = new CQL_REST();
-        Response response = cql_rest.getCategories();
+        CqlRest cqlRest = new CqlRest();
+        Response response = cqlRest.getCategories();
         assertEquals(200, response.getStatus());
     }
 
     @Test
     void testCategory() {
-        CQL_REST cql_rest = new CQL_REST();
-        Response response = cql_rest.getCategory("CQLLogicalOperators");
+        CqlRest cqlRest = new CqlRest();
+        Response response = cqlRest.getCategory("CQLLogicalOperators");
         assertEquals(200, response.getStatus());
     }
 
     @Test
     void testDatatypes( ) {
-        CQL_REST cql_rest = new CQL_REST();
-        Response response = cql_rest.getDatatypes();
+        CqlRest cqlRest = new CqlRest();
+        Response response = cqlRest.getDatatypes();
         assertEquals(200, response.getStatus());
     }
 
     @Test
     void testDatatype() {
-        CQL_REST cql_rest = new CQL_REST();
-        Response response = cql_rest.getDatatype("CQLLogicalOperators");
+        CqlRest cqlRest = new CqlRest();
+        Response response = cqlRest.getDatatype("CQLLogicalOperators");
         assertEquals(200, response.getStatus());
     }
 
     @Test
     void testCategoryDatatypes() {
-        CQL_REST cql_rest = new CQL_REST();
-        Response response = cql_rest.getCategoryDatatypes("CQLLogicalOperators");
+        CqlRest cqlRest = new CqlRest();
+        Response response = cqlRest.getCategoryDatatypes("CQLLogicalOperators");
         assertEquals(200, response.getStatus());
     }
 
     @Test
     void testCategoryDatatype() {
-        CQL_REST cql_rest = new CQL_REST();
-        Response response = cql_rest.getCategoryDatatype("CQLLogicalOperators", "CQLLogicalOperators");
+        CqlRest cqlRest = new CqlRest();
+        Response response = cqlRest.getCategoryDatatype("CQLLogicalOperators", "CQLLogicalOperators");
         assertEquals(200, response.getStatus());
     }
 
     @Test
     void testAttributes() {
-        CQL_REST cql_rest = new CQL_REST();
-        Response response = cql_rest.getAttributes();
+        CqlRest cqlRest = new CqlRest();
+        Response response = cqlRest.getAttributes();
         assertEquals(200, response.getStatus());
     }
 
     @Test
     void testDatatypeAttributes(  ) {
-        CQL_REST cql_rest = new CQL_REST();
-        Response response = cql_rest.getDatatypeAttributes("CQLLogicalOperators");
+        CqlRest cqlRest = new CqlRest();
+        Response response = cqlRest.getDatatypeAttributes("CQLLogicalOperators");
         assertEquals(200, response.getStatus());
     }
 
     @Test
     void testDatatypeAttribute() {
-        CQL_REST cql_rest = new CQL_REST();
-        Response response = cql_rest.getDatatypeAttribute("CQLLogicalOperators", "And");
+        CqlRest cqlRest = new CqlRest();
+        Response response = cqlRest.getDatatypeAttribute("CQLLogicalOperators", "And");
         assertEquals(200, response.getStatus());
     }
 
     @Test
     void testAttributesAttribute() {
-        CQL_REST cql_rest = new CQL_REST();
-        Response response = cql_rest.getAttributes("And");
+        CqlRest cqlRest = new CqlRest();
+        Response response = cqlRest.getAttributes("And");
         assertEquals(200, response.getStatus());
     }
 

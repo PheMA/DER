@@ -5,9 +5,9 @@ package org.mayo.edu.phema.helper;
  * This class contains all the SPARQL statements
  *
  */
-public class SparqlStmt {
+public abstract class SparqlStmt {
 
-    private static String PREFIX = 
+    protected static String PREFIX = 
             "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> "
             +" PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> "
             +" PREFIX skos: <http://www.w3.org/2004/02/skos/core#> "
@@ -15,63 +15,63 @@ public class SparqlStmt {
             +" PREFIX qdm: <http://rdf.healthit.gov/qdm/schema#>  "
             +" PREFIX fhir: <http://rdf.hl7.org/fhir/schema#>";
             
-    private static String PREFIX_QDM = " PREFIX qdm-5-4: <http://rdf.healthit.gov/qdm/element#> ";
+    protected static String PREFIX_QDM = " PREFIX qdm-5-4: <http://rdf.healthit.gov/qdm/element#> ";
 
-    private static String PREFIX_FHIR = " PREFIX fhir-3-0-1: <http://rdf.hl7.org/fhir/fhir-3-0-1#> ";
+    protected static String PREFIX_FHIR = " PREFIX fhir-3-0-1: <http://rdf.hl7.org/fhir/fhir-3-0-1#> ";
 
-    private static String PREFIX_CQL = " PREFIX cql-1-4: <http://cql.hl7.org/element#>  ";
+    protected static String PREFIX_CQL = " PREFIX cql-1-4: <http://cql.hl7.org/element#>  ";
 
-    private static String VERSION_FHIR = "?id mms:version fhir-3-0-1:fhir-3-0-1 .";
+    protected static String VERSION_FHIR = "?id mms:version fhir-3-0-1:fhir-3-0-1 .";
 
-    private static String VERSION_CQL = "?id mms:version cql-1-4:cql-1-4 .";
+    protected static String VERSION_CQL = "?id mms:version cql-1-4:cql-1-4 .";
 
-    private static String SELECT = " SELECT * WHERE { ";
+    protected static String SELECT = " SELECT * WHERE { ";
     
-    private static String QDM_TYPE = " ?id mms:version qdm-5-4:qdm-5-4 . ";
+    protected static String QDM_TYPE = " ?id mms:version qdm-5-4:qdm-5-4 . ";
     
-    private static String FHIR_TYPE = " ?id rdf:type fhir:Resource . ";
+    protected static String FHIR_TYPE = " ?id rdf:type fhir:Resource . ";
 
-    private static String CQL_TYPE = " ?id rdf:type fhir:Resource . ";
+    protected static String CQL_TYPE = " ?id rdf:type fhir:Resource . ";
     
-    private static String ALL_START = PREFIX + SELECT;
+    protected static String ALL_START = PREFIX + SELECT;
     
-    private static String QDM_START = PREFIX + PREFIX_QDM + SELECT +QDM_TYPE;
+    protected static String QDM_START = PREFIX + PREFIX_QDM + SELECT +QDM_TYPE;
     
-    private static String FHIR_START = PREFIX + PREFIX_FHIR + SELECT + FHIR_TYPE + VERSION_FHIR;
+    protected static String FHIR_START = PREFIX + PREFIX_FHIR + SELECT + FHIR_TYPE + VERSION_FHIR;
 
-    private static String CQL_START = PREFIX + PREFIX_CQL + SELECT + VERSION_CQL;
+    protected static String CQL_START = PREFIX + PREFIX_CQL + SELECT + VERSION_CQL;
 
-    private static String CONTEXT_QDM = " ?id mms:context qdm-5-4:";
+    protected static String CONTEXT_QDM = " ?id mms:context qdm-5-4:";
     
-    private static String CONTEXT_FHIR = " ?id mms:context fhir-3-0-1:";
+    protected static String CONTEXT_FHIR = " ?id mms:context fhir-3-0-1:";
 
-    private static String CONTEXT_CQL = " ?id mms:context cql-1-4:";
+    protected static String CONTEXT_CQL = " ?id mms:context cql-1-4:";
     
-    private static String FILTER_NAME = " FILTER (STR(?dataElementName)='";
+    protected static String FILTER_NAME = " FILTER (STR(?dataElementName)='";
     
-    private static String FILTER_CONTEXT = " FILTER (REGEX(STR(?context), '";
+    protected static String FILTER_CONTEXT = " FILTER (REGEX(STR(?context), '";
     
-    private static String LABEL = " ?id rdfs:label ?label . ";
+    protected static String LABEL = " ?id rdfs:label ?label . ";
     
-    private static String CATEGORY = " ?id rdf:type qdm:QDMCategory . " +LABEL;
+    protected static String CATEGORY = " ?id rdf:type qdm:QDMCategory . " +LABEL;
     
-    private static String DATATYPE = " ?id rdf:type qdm:QDMDatatype . " +LABEL;
+    protected static String DATATYPE = " ?id rdf:type qdm:QDMDatatype . " +LABEL;
     
-    private static String ATTRIBUTE = " ?id rdf:type qdm:QDMAttribute . " +LABEL;
+    protected static String ATTRIBUTE = " ?id rdf:type qdm:QDMAttribute . " +LABEL;
     
-    private static String LOGICAL = " ?id rdf:type qdm:QDMLogicalOperator . " +LABEL;
+    protected static String LOGICAL = " ?id rdf:type qdm:QDMLogicalOperator . " +LABEL;
             
-    private static String RELATIONSHIP = " ?id rdf:type qdm:QDMRelationshipOperator . " +LABEL;
+    protected static String RELATIONSHIP = " ?id rdf:type qdm:QDMRelationshipOperator . " +LABEL;
     
-    private static String COMPARISON = " ?id rdf:type qdm:QDMComparisonOperator . " +LABEL;
+    protected static String COMPARISON = " ?id rdf:type qdm:QDMComparisonOperator . " +LABEL;
             
-    private static String TEMPORAL = " ?id rdf:type qdm:QDMTemporalOperator . " +LABEL;
+    protected static String TEMPORAL = " ?id rdf:type qdm:QDMTemporalOperator . " +LABEL;
                     
-    private static String SUBSET =  " ?id rdf:type qdm:QDMSubsetOperator . " +LABEL;
+    protected static String SUBSET =  " ?id rdf:type qdm:QDMSubsetOperator . " +LABEL;
                             
-    private static String FUNCTION = " ?id rdf:type qdm:QDMFunction . " +LABEL;
+    protected static String FUNCTION = " ?id rdf:type qdm:QDMFunction . " +LABEL;
 
-    private static String OPTIONAL = 
+    protected static String OPTIONAL = 
             " OPTIONAL { ?id mms:context ?context . } " +
             " OPTIONAL { ?id mms:version ?version . }" +
             " OPTIONAL { ?id skos:definition ?definition . }  " +
@@ -83,13 +83,13 @@ public class SparqlStmt {
             " OPTIONAL { ?id fhir:type  ?type .}   " +
             " OPTIONAL { ?id fhir:meta-attribute ?isMeta .} " ;
     
-    private static String PER = " . ";
+    protected static String PER = " . ";
     
-    private static String PAREN = "') ";
+    protected static String PAREN = "') ";
     
-    private static String POSTFIX = " } ";
+    protected static String POSTFIX = " } ";
 
-    private static String END = OPTIONAL + POSTFIX;
+    protected static String END = OPTIONAL + POSTFIX;
     
     public static String CATEGORIES = ALL_START + CATEGORY + END;
     
