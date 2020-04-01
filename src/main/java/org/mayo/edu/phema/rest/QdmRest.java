@@ -6,8 +6,7 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-
-import org.mayo.edu.phema.helper.SparqlStmt;
+import org.mayo.edu.phema.helper.QdmStmt;
 
 
 /**
@@ -24,7 +23,7 @@ public class QdmRest extends ElementRest  {
    @Path("/categories")
    @Produces(MediaType.APPLICATION_JSON)
    public Response getCategories() {
-       return queryRepository(SparqlStmt.QDM_CATEGORIES);
+       return queryRepository(QdmStmt.QDM_CATEGORIES);
    }
    
    /**
@@ -36,7 +35,7 @@ public class QdmRest extends ElementRest  {
    @Path("/category/{category}")
    @Produces(MediaType.APPLICATION_JSON)
    public Response getCategory(@PathParam("category") String category) {
-       return queryRepository(SparqlStmt.getQdmCategoryStatement(category));
+       return queryRepository(QdmStmt.getQdmCategoryStatement(category));
    }
    
    /**
@@ -47,7 +46,7 @@ public class QdmRest extends ElementRest  {
    @Path("/datatypes")
    @Produces(MediaType.APPLICATION_JSON)
    public Response getDatatypes( ) {
-       return queryRepository(SparqlStmt.QDM_DATATYPES);
+       return queryRepository(QdmStmt.QDM_DATATYPES);
    }
    
    /**
@@ -59,7 +58,7 @@ public class QdmRest extends ElementRest  {
    @Path("/datatype/{datatype}")
    @Produces(MediaType.APPLICATION_JSON)
    public Response getDatatype(@PathParam("datatype") String datatype) {
-       return queryRepository(SparqlStmt.getQdmDatatypeStatement(datatype));
+       return queryRepository(QdmStmt.getQdmDatatypeStatement(datatype));
    }
    
    /**
@@ -71,7 +70,7 @@ public class QdmRest extends ElementRest  {
    @Path("/category/{category}/datatypes")
    @Produces(MediaType.APPLICATION_JSON)
    public Response getCategoryDatatypes(@PathParam("category") String category) {
-       return queryRepository(SparqlStmt.getQdmDatatypesForCategoryStatement(category));
+       return queryRepository(QdmStmt.getQdmDatatypesForCategoryStatement(category));
    }
    
    /**
@@ -84,7 +83,7 @@ public class QdmRest extends ElementRest  {
    @Path("category/{category}/datatype/{datatype}")
    @Produces(MediaType.APPLICATION_JSON)
    public Response getCategoryDatatype(@PathParam("category") String category, @PathParam("datatype") String datatype) {
-       return queryRepository(SparqlStmt.getQdmDatatypeForCategoryStatement(category, datatype));
+       return queryRepository(QdmStmt.getQdmDatatypeForCategoryStatement(category, datatype));
    }
    
    /**
@@ -95,7 +94,7 @@ public class QdmRest extends ElementRest  {
    @Path("/attributes")
    @Produces(MediaType.APPLICATION_JSON)
    public Response getAttributes() {
-       return queryRepository(SparqlStmt.QDM_ATTRIBUTES);
+       return queryRepository(QdmStmt.QDM_ATTRIBUTES);
    }
    
    /**
@@ -107,7 +106,7 @@ public class QdmRest extends ElementRest  {
    @Path("/datatype/{datatype}/attributes")
    @Produces(MediaType.APPLICATION_JSON)
    public Response getDatatypeAttributes(@PathParam("datatype") String datatype) {
-       return queryRepository(SparqlStmt.getQdmAttributesForDatatypeStatement(datatype));
+       return queryRepository(QdmStmt.getQdmAttributesForDatatypeStatement(datatype));
    }
    
    /**
@@ -119,7 +118,7 @@ public class QdmRest extends ElementRest  {
    @Path("/datatype/{datatype}/instances")
    @Produces(MediaType.APPLICATION_JSON)
    public Response getDatatypeInstances(@PathParam("datatype") String datatype) {
-       return queryRepository(SparqlStmt.getQdmInstancesForDatatypeStatement(datatype));
+       return queryRepository(QdmStmt.getQdmInstancesForDatatypeStatement(datatype));
    }
    
    /**
@@ -132,7 +131,7 @@ public class QdmRest extends ElementRest  {
    @Path("/datatype/{datatype}/attribute/{attribute}")
    @Produces(MediaType.APPLICATION_JSON)
    public Response getDatatypeAttribute(@PathParam("datatype") String datatype, @PathParam("attribute") String attribute) {
-       return queryRepository(SparqlStmt.getQdmAttributeForDatatypeStatement(datatype, attribute));
+       return queryRepository(QdmStmt.getQdmAttributeForDatatypeStatement(datatype, attribute));
    }
    
    /**
@@ -144,146 +143,7 @@ public class QdmRest extends ElementRest  {
    @Path("/attribute/{attribute}")
    @Produces(MediaType.APPLICATION_JSON)
    public Response getAttributes(@PathParam("attribute") String attribute) {
-       return queryRepository(SparqlStmt.getQdmAttributesStatement(attribute));
+       return queryRepository(QdmStmt.getQdmAttributesStatement(attribute));
    }
-   
-   /**
-    * Returns all QDM Logical Operators  
-    * @return JSON Response
-    */
-   @GET
-   @Path("/logicalOperators")
-   @Produces(MediaType.APPLICATION_JSON)
-   public Response getLogicalOperators( ) {
-       return queryRepository(SparqlStmt.QDM_LOGICAL_OPERATORS);
-   }
-   
-   /**
-    * Returns a specific QDM Logical Operator
-    * @param logicalOperator the name of the Logical Operator
-    * @return JSON Response
-    */
-   @GET
-   @Path("/logicalOperator/{logicalOperator}")
-   @Produces(MediaType.APPLICATION_JSON)
-   public Response getLogicalOperator(@PathParam("logicalOperator") String logicalOperator) {
-       return queryRepository(SparqlStmt.getQdmLogicalOperator(logicalOperator));
-   }
-   
-   /**
-    * Returns all QDM Relationship Operators
-    * @return JSON Response
-    */
-   @GET
-   @Path("/relationshipOperators")
-   @Produces(MediaType.APPLICATION_JSON)
-   public Response getRelationshipOperators( ) {
-       return queryRepository(SparqlStmt.QDM_RELATIONSHIP_OPERATORS);
-   }
-   
-   /**
-    * Returns a specific QDM Relationship Operator
-    * @param relationshipOperator the name of the Relationship Operator
-    * @return JSON Response
-    */
-   @GET
-   @Path("/relationshipOperator/{relationshipOperator}")
-   @Produces(MediaType.APPLICATION_JSON)
-   public Response getRelationshipOperator(@PathParam("relationshipOperator") String relationshipOperator) {
-       return queryRepository(SparqlStmt.getQdmRelationshipOperator(relationshipOperator));
-   }
-   
-   /**
-    * Returns all QDM Comparison Operators
-    * @return JSON Response
-    */
-   @GET
-   @Path("/comparisonOperators")
-   @Produces(MediaType.APPLICATION_JSON)
-   public Response getComparisonOperators( ) {
-       return queryRepository(SparqlStmt.QDM_COMPARISON_OPERATORS);
-   }
-   
-   /**
-    * Returns a specific QDM Comparison Operator
-    * @param comparisonOperator the name of the Comparison Operator 
-    * @return JSON Response
-    */
-   @GET
-   @Path("/comparisonOperator/{comparisonOperator}")
-   @Produces(MediaType.APPLICATION_JSON)
-   public Response getComparisonOperator(@PathParam("comparisonOperator") String comparisonOperator) {
-       return queryRepository(SparqlStmt.getQdmComparisonOperator(comparisonOperator));
-   }
-   
-   /**
-    * Returns all QDM Temporal Operators
-    * @return JSON Response
-    */
-   @GET
-   @Path("/temporalOperators")
-   @Produces(MediaType.APPLICATION_JSON)
-   public Response getTemporalOperators( ) {
-       return queryRepository(SparqlStmt.QDM_TEMPORAL_OPERATORS);
-   }
-   
-   /**
-    * Returns a specific QDM Temporal Operator
-    * @param temporalOperator the name of the 
-    * @return JSON Response
-    */
-   @GET
-   @Path("/temporalOperator/{temporalOperator}")
-   @Produces(MediaType.APPLICATION_JSON)
-   public Response getTemporalOperator(@PathParam("temporalOperator") String temporalOperator) {
-       return queryRepository(SparqlStmt.getQdmTemporalOperator(temporalOperator));
-   }
-   
-   /**
-    * Returns all QDM Subset Operators
-    * @return JSON Response
-    */
-   @GET
-   @Path("/subsetOperators")
-   @Produces(MediaType.APPLICATION_JSON)
-   public Response getSubsetOperators( ) {
-       return queryRepository(SparqlStmt.QDM_SUBSET_OPERATORS);
-   }
-   
-   /**
-    * Returns a specific QDM Subset Operator
-    * @param subsetOperator the name of the Subset Operator
-    * @return JSON Response
-    */
-   @GET
-   @Path("/subsetOperator/{subsetOperator}")
-   @Produces(MediaType.APPLICATION_JSON)
-   public Response getSubsetOperator(@PathParam("subsetOperator") String subsetOperator)  {
-       return queryRepository(SparqlStmt.getQdmSubsetOperator(subsetOperator));
-   }
-   
-   /**
-    * Returns all QDM Functions
-    * @return JSON Response
-    */
-   @GET
-   @Path("/functions")
-   @Produces(MediaType.APPLICATION_JSON)
-   public Response getFunctions( ) {
-       return queryRepository(SparqlStmt.QDM_FUNCTIONS);
-   }
-   
-   /**
-    * Returns a specific QDM Functions
-    * @param function the name of the Function
-    * @return JSON Response
-    */
-   @GET
-   @Path("/function/{function}")
-   @Produces(MediaType.APPLICATION_JSON)
-   public Response getFunction(@PathParam("function") String function) {
-       return queryRepository(SparqlStmt.getQdmFunction(function));
-   }
-
 
 }

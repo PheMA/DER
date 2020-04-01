@@ -2,15 +2,15 @@ package org.mayo.edu.phema.helper;
 
 public class FhirStmt extends SparqlStmt {
 
-    private static String PREFIX_FHIR = " PREFIX fhir-3-0-1: <http://rdf.hl7.org/fhir/fhir-3-0-1#> ";
+    private static String PREFIX_FHIR = " PREFIX fhir-4-0-1: <http://rdf.hl7.org/fhir/fhir-4-0-1#> ";
 
-    private static String VERSION_FHIR = "?id mms:version fhir-3-0-1:fhir-3-0-1 .";
+    private static String VERSION_FHIR = "?id mms:version fhir-4-0-1:fhir-4-0-1 .";
 
     private static String FHIR_TYPE = " ?id rdf:type fhir:Resource . ";
 
     private static String FHIR_START = PREFIX + PREFIX_FHIR + SELECT + FHIR_TYPE + VERSION_FHIR;
 
-    private static String CONTEXT_FHIR = " ?id mms:context fhir-3-0-1:";
+    private static String CONTEXT_FHIR = " ?id mms:context fhir-4-0-1:";
 
     public static String FHIR_CATEGORIES = FHIR_START + CATEGORY + END;
 
@@ -54,10 +54,8 @@ public class FhirStmt extends SparqlStmt {
     // get a specific attribute for a specific datatype
     public static String getFhirAttributeForDatatypeStatement(String datatypeName, String attributeName)  {
         String fullName = datatypeName +"." +attributeName;
-        String stmt = FHIR_START + ATTRIBUTE + VERSION_FHIR + OPTIONAL +
+        return FHIR_START + ATTRIBUTE + VERSION_FHIR + OPTIONAL +
                 " FILTER (REGEX(STR(?id), \"" +fullName +"\", \"i\"))" + POSTFIX;
-        //System.out.println(stmt);
-        return stmt;
     }
 
 }

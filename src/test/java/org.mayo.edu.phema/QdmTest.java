@@ -6,12 +6,13 @@ import javax.ws.rs.core.Response;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class QdmTest {
+public class QdmTest extends SparqlTest {
 
     @Test
     void testCategories() {
         QdmRest qdmRest = new QdmRest();
         Response response = qdmRest.getCategories();
+        assertEquals(21, getResponseCount(response));
         assertEquals(200, response.getStatus());
     }
 
@@ -26,6 +27,7 @@ public class QdmTest {
     void testDatatypes( ) {
         QdmRest qdmRest = new QdmRest();
         Response response = qdmRest.getDatatypes();
+        assertEquals(53, getResponseCount(response));
         assertEquals(200, response.getStatus());
     }
 
@@ -33,6 +35,7 @@ public class QdmTest {
     void testDatatype() {
         QdmRest qdmRest = new QdmRest();
         Response response = qdmRest.getDatatype("AdverseEvent");
+        assertEquals(1, getResponseCount(response));
         assertEquals(200, response.getStatus());
     }
 
@@ -54,6 +57,7 @@ public class QdmTest {
     void testAttributes() {
         QdmRest qdmRest = new QdmRest();
         Response response = qdmRest.getAttributes();
+        assertEquals(349, getResponseCount(response));
         assertEquals(200, response.getStatus());
     }
 
@@ -61,6 +65,7 @@ public class QdmTest {
     void testDatatypeAttributes(  ) {
         QdmRest qdmRest = new QdmRest();
         Response response = qdmRest.getDatatypeAttributes("AdverseEvent");
+        assertEquals(7, getResponseCount(response));
         assertEquals(200, response.getStatus());
     }
 

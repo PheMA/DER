@@ -6,8 +6,8 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import org.mayo.edu.phema.helper.FhirStmt;
 
-import org.mayo.edu.phema.helper.SparqlStmt;
 
 /**
  * This class contains the REST service calls pertaining to FHIR data elements.
@@ -23,7 +23,7 @@ public class FhirRest extends ElementRest {
    @Path("/categories")
    @Produces(MediaType.APPLICATION_JSON)
    public Response getCategories() {
-       return queryRepository(SparqlStmt.FHIR_CATEGORIES);
+       return queryRepository(FhirStmt.FHIR_CATEGORIES);
    }
    
    /**
@@ -35,8 +35,7 @@ public class FhirRest extends ElementRest {
    @Path("/category/{category}")
    @Produces(MediaType.APPLICATION_JSON)
    public Response getCategory(@PathParam("category") String category) {
-       System.out.println (SparqlStmt.getFhirCategoryStatement(category));
-       return queryRepository(SparqlStmt.getFhirCategoryStatement(category));
+       return queryRepository(FhirStmt.getFhirCategoryStatement(category));
    }
    
    /**
@@ -47,7 +46,7 @@ public class FhirRest extends ElementRest {
    @Path("/datatypes")
    @Produces(MediaType.APPLICATION_JSON)
    public Response getDatatypes( ) {
-       return queryRepository(SparqlStmt.FHIR_DATATYPES);
+       return queryRepository(FhirStmt.FHIR_DATATYPES);
    }
    
    /**
@@ -59,7 +58,7 @@ public class FhirRest extends ElementRest {
    @Path("/datatype/{datatype}")
    @Produces(MediaType.APPLICATION_JSON)
    public Response getDatatype(@PathParam("datatype") String datatype) {
-       return queryRepository(SparqlStmt.getFhirDatatypeStatement(datatype));
+       return queryRepository(FhirStmt.getFhirDatatypeStatement(datatype));
    }
    
    /**
@@ -71,7 +70,7 @@ public class FhirRest extends ElementRest {
    @Path("/category/{category}/datatypes")
    @Produces(MediaType.APPLICATION_JSON)
    public Response getCategoryDatatypes(@PathParam("category") String category) {
-       return queryRepository(SparqlStmt.getFhirDatatypesForCategoryStatement(category));
+       return queryRepository(FhirStmt.getFhirDatatypesForCategoryStatement(category));
    }
    
    /**
@@ -84,7 +83,7 @@ public class FhirRest extends ElementRest {
    @Path("category/{category}/datatype/{datatype}")
    @Produces(MediaType.APPLICATION_JSON)
    public Response getCategoryDatatype(@PathParam("category") String category, @PathParam("datatype") String datatype) {
-       return queryRepository(SparqlStmt.getFhirDatatypeForCategoryStatement(category, datatype));
+       return queryRepository(FhirStmt.getFhirDatatypeForCategoryStatement(category, datatype));
    }
    
    /**
@@ -95,7 +94,7 @@ public class FhirRest extends ElementRest {
    @Path("/attributes")
    @Produces(MediaType.APPLICATION_JSON)
    public Response getAttributes() {
-       return queryRepository(SparqlStmt.FHIR_ATTRIBUTES);
+       return queryRepository(FhirStmt.FHIR_ATTRIBUTES);
    }
    
    /**
@@ -107,7 +106,7 @@ public class FhirRest extends ElementRest {
    @Path("/datatype/{datatype}/attributes")
    @Produces(MediaType.APPLICATION_JSON)
    public Response getDatatypeAttributes(@PathParam("datatype") String datatype) {
-       return queryRepository(SparqlStmt.getFhirAttributesForDatatypeStatement(datatype));
+       return queryRepository(FhirStmt.getFhirAttributesForDatatypeStatement(datatype));
    }
    
    /**
@@ -120,7 +119,7 @@ public class FhirRest extends ElementRest {
    @Path("/datatype/{datatype}/attribute/{attribute}")
    @Produces(MediaType.APPLICATION_JSON)
    public Response getDatatypeAttribute(@PathParam("datatype") String datatype, @PathParam("attribute") String attribute) {
-       return queryRepository(SparqlStmt.getFhirAttributeForDatatypeStatement(datatype, attribute));
+       return queryRepository(FhirStmt.getFhirAttributeForDatatypeStatement(datatype, attribute));
    }
    
    /**
@@ -132,12 +131,8 @@ public class FhirRest extends ElementRest {
    @Path("/attribute/{attribute}")
    @Produces(MediaType.APPLICATION_JSON)
    public Response getAttributes(@PathParam("attribute") String attribute) {
-       return queryRepository(SparqlStmt.getFhirAttributesStatement(attribute));
+       return queryRepository(FhirStmt.getFhirAttributesStatement(attribute));
    }
 
-//   public static FhirJson convertToJson(String stringRep)  {
-//      FhirJson fhirJson = new FhirJson();
-//      return fhirJson.convertToJson(stringRep);
-//   }
 
 }

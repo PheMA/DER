@@ -1,6 +1,6 @@
 package org.mayo.edu.phema.rest;
 
-import org.mayo.edu.phema.helper.SparqlStmt;
+import org.mayo.edu.phema.helper.CqlStmt;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -24,7 +24,7 @@ public class CqlRest extends ElementRest {
    @Path("/categories")
    @Produces(MediaType.APPLICATION_JSON)
    public Response getCategories() {
-       return queryRepository(SparqlStmt.CQL_CATEGORIES);
+       return queryRepository(CqlStmt.CQL_CATEGORIES);
    }
    
    /**
@@ -36,8 +36,7 @@ public class CqlRest extends ElementRest {
    @Path("/category/{category}")
    @Produces(MediaType.APPLICATION_JSON)
    public Response getCategory(@PathParam("category") String category) {
-       System.out.println (SparqlStmt.getCqlCategoryStatement(category));
-       return queryRepository(SparqlStmt.getCqlCategoryStatement(category));
+       return queryRepository(CqlStmt.getCqlCategoryStatement(category));
    }
    
    /**
@@ -48,7 +47,7 @@ public class CqlRest extends ElementRest {
    @Path("/datatypes")
    @Produces(MediaType.APPLICATION_JSON)
    public Response getDatatypes( ) {
-       return queryRepository(SparqlStmt.CQL_DATATYPES);
+       return queryRepository(CqlStmt.CQL_DATATYPES);
    }
    
    /**
@@ -60,7 +59,7 @@ public class CqlRest extends ElementRest {
    @Path("/datatype/{datatype}")
    @Produces(MediaType.APPLICATION_JSON)
    public Response getDatatype(@PathParam("datatype") String datatype) {
-       return queryRepository(SparqlStmt.getCqlDatatypeStatement(datatype));
+       return queryRepository(CqlStmt.getCqlDatatypeStatement(datatype));
    }
    
    /**
@@ -72,7 +71,7 @@ public class CqlRest extends ElementRest {
    @Path("/category/{category}/datatypes")
    @Produces(MediaType.APPLICATION_JSON)
    public Response getCategoryDatatypes(@PathParam("category") String category) {
-       return queryRepository(SparqlStmt.getCqlDatatypesForCategoryStatement(category));
+       return queryRepository(CqlStmt.getCqlDatatypesForCategoryStatement(category));
    }
    
    /**
@@ -85,7 +84,7 @@ public class CqlRest extends ElementRest {
    @Path("category/{category}/datatype/{datatype}")
    @Produces(MediaType.APPLICATION_JSON)
    public Response getCategoryDatatype(@PathParam("category") String category, @PathParam("datatype") String datatype) {
-       return queryRepository(SparqlStmt.getCqlDatatypeForCategoryStatement(category, datatype));
+       return queryRepository(CqlStmt.getCqlDatatypeForCategoryStatement(category, datatype));
    }
    
    /**
@@ -96,7 +95,7 @@ public class CqlRest extends ElementRest {
    @Path("/attributes")
    @Produces(MediaType.APPLICATION_JSON)
    public Response getAttributes() {
-       return queryRepository(SparqlStmt.CQL_ATTRIBUTES);
+       return queryRepository(CqlStmt.CQL_ATTRIBUTES);
    }
    
    /**
@@ -108,7 +107,7 @@ public class CqlRest extends ElementRest {
    @Path("/datatype/{datatype}/attributes")
    @Produces(MediaType.APPLICATION_JSON)
    public Response getDatatypeAttributes(@PathParam("datatype") String datatype) {
-       return queryRepository(SparqlStmt.getCqlAttributesForDatatypeStatement(datatype));
+       return queryRepository(CqlStmt.getCqlAttributesForDatatypeStatement(datatype));
    }
    
    /**
@@ -121,7 +120,7 @@ public class CqlRest extends ElementRest {
    @Path("/datatype/{datatype}/attribute/{attribute}")
    @Produces(MediaType.APPLICATION_JSON)
    public Response getDatatypeAttribute(@PathParam("datatype") String datatype, @PathParam("attribute") String attribute) {
-       return queryRepository(SparqlStmt.getCqlAttributeForDatatypeStatement(datatype, attribute));
+       return queryRepository(CqlStmt.getCqlAttributeForDatatypeStatement(datatype, attribute));
    }
    
    /**
@@ -133,7 +132,7 @@ public class CqlRest extends ElementRest {
    @Path("/attribute/{attribute}")
    @Produces(MediaType.APPLICATION_JSON)
    public Response getAttributes(@PathParam("attribute") String attribute) {
-       return queryRepository(SparqlStmt.getCqlAttributesStatement(attribute));
+       return queryRepository(CqlStmt.getCqlAttributesStatement(attribute));
    }
    
 
