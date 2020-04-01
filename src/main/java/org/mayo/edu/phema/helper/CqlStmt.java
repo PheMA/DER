@@ -1,31 +1,24 @@
 package org.mayo.edu.phema.helper;
 
-import org.apache.jena.base.Sys;
-
 public class CqlStmt extends SparqlStmt {
 
-    public static String VERSION_CQL = "?id mms:version cql-1-4:cql-1-4 .";
+    private static final String VERSION_CQL = "?id mms:version cql-1-4:cql-1-4 .";
 
-    public static String CQL_TYPE = " rdf:type mms:DataElement ;  ";
+    private static final String CQL_START = PREFIX + SELECT + VERSION_CQL;
 
-    public static String CQL_START = PREFIX + SELECT + VERSION_CQL;
+    private static final String SUBCLASS_CQL = " ?id rdfs:subClassOf cql-1-4:";
 
-    public static String CONTEXT_CQL = " ?id mms:context cql-1-4:";
+    private static final String CQL_OPTIONAL = "  OPTIONAL { ?id mms:id ?id.}  "
+        + "  OPTIONAL { ?id rdfs:subClassOf ?subClassOf . } "
+        + "  OPTIONAL { ?id mms:version ?version . } "
+        + "  OPTIONAL { ?id rdfs:label  ?label .}  "
+        + "  OPTIONAL { ?id skos:definition ?definition . } ";
 
-    public static String SUBCLASS_CQL = " ?id rdfs:subClassOf cql-1-4:";
+    public static final String CQL_CATEGORIES = CQL_START + CATEGORY + END;
 
-    public static String CQL_CATEGORIES = CQL_START + CATEGORY + END;
+    public static final String CQL_DATATYPES = CQL_START + DATATYPE + END;
 
-    public static String CQL_DATATYPES = CQL_START + DATATYPE + END;
-
-    public static String CQL_ATTRIBUTES = CQL_START + ATTRIBUTE + END;
-
-    public static String CQL_OPTIONAL = "  OPTIONAL { ?id mms:id ?id.}  \n"
-                                + "  OPTIONAL { ?id rdfs:subClassOf ?subClassOf . }  \n"
-                                + "  OPTIONAL { ?id mms:version ?version . } \n"
-                                + "  OPTIONAL { ?id rdfs:label  ?label .}  \n"
-                                + "  OPTIONAL { ?id skos:definition ?definition . } ";
-
+    public static final String CQL_ATTRIBUTES = CQL_START + ATTRIBUTE + END;
 
     // get a specific category based on its name
     public static String getCqlCategoryStatement(String categoryName)  {
@@ -56,7 +49,7 @@ public class CqlStmt extends SparqlStmt {
     }
 
     // get a specific attribute for a specific datatype
-    public static String getCqlAttributeForDatatypeStatement(String datatypeName, String attributeName)  {
+    public static String getCqlAttributeForDatatypeStatement(String attributeName)  {
         return CQL_START + ATTRIBUTE + VERSION_CQL + OPTIONAL + FILTER_NAME +attributeName + PAREN + POSTFIX;
     }
 

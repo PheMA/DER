@@ -75,7 +75,7 @@ public class CqlTest extends SparqlTest {
     @Test
     void testDatatypeAttribute() {
         CqlRest cqlRest = new CqlRest();
-        Response response = cqlRest.getDatatypeAttribute("CQL_10003", "And");
+        Response response = cqlRest.getDatatypeAttribute("And");
         assertEquals(1, getResponseCount(response));
         assertEquals(200, response.getStatus());
     }

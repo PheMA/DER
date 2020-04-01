@@ -13,8 +13,7 @@ import java.io.ByteArrayOutputStream;
 
 public abstract class ElementRest {
 
-    //private static final String sparqlEndpoint = "http://23.101.174.173:9999/blazegraph";
-    private static final String sparqlEndpoint = "http://52.23.162.55:9999/blazegraph";
+    private static String sparqlEndpoint = "http://52.23.162.55:9999/blazegraph";
 
     protected Response queryRepository(String sparql)  {
         Response response = null;
@@ -38,7 +37,14 @@ public abstract class ElementRest {
             response = Response.status(200).entity(json).build();
 
         } catch(Exception e ) {
-            response = Response.status(400).entity(e.getMessage()).build();;
+            response = Response.status(400).entity(e.getMessage()).build();
+        }
+        finally  {
+            try {
+                repo.close();
+            } catch (Exception e)  {
+                // swallow
+            }
         }
 
         return response;

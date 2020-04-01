@@ -8,7 +8,6 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import org.mayo.edu.phema.helper.QdmStmt;
 
-
 /**
  * This class contains the REST service calls pertaining to QDM data elements.
  */
@@ -108,19 +107,7 @@ public class QdmRest extends ElementRest  {
    public Response getDatatypeAttributes(@PathParam("datatype") String datatype) {
        return queryRepository(QdmStmt.getQdmAttributesForDatatypeStatement(datatype));
    }
-   
-   /**
-    * Returns all instances of a specific QDM Datatype
-    * @param datatype is the name of the Datatype
-    * @return JSON Response
-    */
-   @GET
-   @Path("/datatype/{datatype}/instances")
-   @Produces(MediaType.APPLICATION_JSON)
-   public Response getDatatypeInstances(@PathParam("datatype") String datatype) {
-       return queryRepository(QdmStmt.getQdmInstancesForDatatypeStatement(datatype));
-   }
-   
+
    /**
     * Returns a specific QDM Attribute for a specified Datatype
     * @param datatype is the name of the datatype

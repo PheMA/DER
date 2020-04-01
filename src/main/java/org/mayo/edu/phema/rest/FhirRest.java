@@ -8,7 +8,6 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import org.mayo.edu.phema.helper.FhirStmt;
 
-
 /**
  * This class contains the REST service calls pertaining to FHIR data elements.
  */

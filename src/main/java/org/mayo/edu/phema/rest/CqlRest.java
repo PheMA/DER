@@ -9,7 +9,6 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
-
 /**
  * This class contains the REST service calls pertaining to CQL data elements.
  */
@@ -112,15 +111,14 @@ public class CqlRest extends ElementRest {
    
    /**
     * Returns a specified CQL Attribute for a specific CQL Datatype
-    * @param datatype is the name of the datatype
     * @param attribute is the name of the attribute
     * @return JSON Response
     */
    @GET
    @Path("/datatype/{datatype}/attribute/{attribute}")
    @Produces(MediaType.APPLICATION_JSON)
-   public Response getDatatypeAttribute(@PathParam("datatype") String datatype, @PathParam("attribute") String attribute) {
-       return queryRepository(CqlStmt.getCqlAttributeForDatatypeStatement(datatype, attribute));
+   public Response getDatatypeAttribute(@PathParam("attribute") String attribute) {
+       return queryRepository(CqlStmt.getCqlAttributeForDatatypeStatement(attribute));
    }
    
    /**
@@ -134,9 +132,5 @@ public class CqlRest extends ElementRest {
    public Response getAttributes(@PathParam("attribute") String attribute) {
        return queryRepository(CqlStmt.getCqlAttributesStatement(attribute));
    }
-   
-
-
-
 
 }
